@@ -50,6 +50,16 @@ body {
   line-height: 1.45;
 }
 
+/* topbar-safe spacing for all pages */
+:root {
+  --topbar-height: 64px;
+}
+
+/* ensure content is not hidden under the fixed navbar */
+body {
+  padding-top: var(--topbar-height);
+}
+
 /* layout helpers */
 .container {
   max-width: var(--container-width);
@@ -215,3 +225,131 @@ body {
 .event-title { margin:0; font-size:1rem; font-weight:700; color:var(--text); }
 
 .muted { color: var(--muted); }
+
+/* Admin-specific layout */
+.admin-shell {
+  display: flex;
+  gap: 1rem;
+  max-width: var(--container-width);
+  margin: 1.25rem auto;
+  padding: 1rem;
+  align-items: flex-start;
+}
+
+.admin-sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: calc(var(--radius));
+  padding: 1rem;
+  color: var(--text);
+  position: sticky;
+  top: calc(var(--topbar-height) + 1rem);
+}
+
+.admin-sidebar h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.admin-sidebar .nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-sidebar .nav button {
+  text-align: left;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.admin-sidebar .nav button.active,
+.admin-sidebar .nav button:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.02);
+}
+
+/* Main admin content / welcome card */
+.admin-main {
+  flex: 1;
+  background: transparent;
+  min-height: 420px;
+}
+
+.welcome-card {
+  background: var(--panel);
+  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: calc(var(--radius));
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.welcome-title {
+  margin: 0 0 0.5rem 0;
+  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  color: var(--text);
+  font-weight: 800;
+}
+
+/* simple form styles for insert UI */
+.admin-form {
+  background: var(--panel);
+  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: calc(var(--radius));
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.form-row .full { grid-column: 1 / -1; }
+
+input[type="text"], input[type="datetime-local"], input[type="number"], textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.04);
+  background: transparent;
+  color: var(--text);
+}
+textarea { min-height: 120px; resize: vertical; }
+
+.form-actions {
+  display:flex;
+  gap:0.5rem;
+  margin-top: 0.5rem;
+}
+.btn {
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.04);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+.btn.ghost { color: var(--muted); }
+.btn.primary { background: linear-gradient(90deg, var(--accent), var(--accent-2)); border: none; color: #fff; }
+
+/* success / error messages */
+.msg {
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+.msg.success { background: rgba(123,211,137,0.08); color: var(--accent-2); border: 1px solid rgba(123,211,137,0.12); }
+.msg.error { background: rgba(255,90,122,0.06); color: var(--accent); border: 1px solid rgba(255,90,122,0.08); }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .admin-shell { flex-direction: column; padding: 1rem; margin: 0.6rem; }
+  .admin-sidebar { width: 100%; position: relative; top: 0; order: -1; }
+}
