@@ -7,8 +7,9 @@
   export let data;
 </script>
 
+<Hero />
+
 <section class="container">
-  <Hero />
   <AboutSection />
   <!-- added studios section on homepage -->
   <StudiosSection studios={data.studios} />
