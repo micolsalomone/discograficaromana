@@ -462,11 +462,16 @@ textarea { min-height: 120px; resize: vertical; }
 /* HERO SECTION - minimal version */
 .hero-minimal {
   position: relative;
-  width: 100%;
-  min-height: 60vh;
+  width: 100vw;                /* full viewport width */
+  left: 50%;
+  margin-left: -50vw;          /* full-bleed even se il contenitore è centrato */
+  min-height: 100vh;          /* full viewport height */
+  height: 100vh;
   display: block;
   overflow: hidden;
   background: #000;
+  z-index: 0;
+  margin-top: calc(-1 * var(--topbar-height)); /* estende sotto la navbar fissa */
 }
 
 .hero-video {
@@ -481,12 +486,12 @@ textarea { min-height: 120px; resize: vertical; }
 
 /* semi-opaque overlay to improve text contrast */
 .hero-overlay {
-  position: relative;
+  position: absolute;        /* copre tutta la hero */
+  inset: 0;
   z-index: 2;
   display: flex;
   align-items: center;
-  justify-content: center; /* <-- centra orizzontalmente il contenuto */
-  min-height: 60vh;
+  justify-content: center;
   padding: 4rem 1.5rem;
   pointer-events: none;
 }
