@@ -7,15 +7,18 @@
     <div class="about-grid">
       <div class="about-content">
         <span class="eyebrow">Chi Siamo</span>
-        <h2 class="about-title">Un collettivo creativo nato dal suono</h2>
+        <h2 class="about-title">
+  Il nostro obiettivo è rendere trasparente e accessibile il processo creativo,
+  offrendo <span class="text-accent">spazi</span>, <span class="text-accent">metodi</span> e <span class="text-accent">competenze</span>.
+</h2>
         <p class="lead">
-          Discografica Romana è un ecosistema che unisce studi di registrazione, produttori di vinili, artisti
-          indipendenti e realtà culturali della capitale.
+Discografica Romana è un ecosistema culturale in cui la produzione musicale indipendente diventa sostenibile, 
+          condivisa e tecnicamente evoluta.
         </p>
         <p class="lead">
-          Crediamo nell'artigianalità del suono, nella potenza del formato analogico e nell'innovazione digitale
-          come strumenti per amplificare la creatività.
+          Un luogo in cui produrre, sperimentare e pubblicare senza dipendere da logiche speculative.
         </p>
+        <p class="lead">Trasformiamo Roma in un centro di sperimentazione sonora riconosciuto e replicabile.</p>
 
         <div class="about-stats">
           <div class="stat">

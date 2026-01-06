@@ -230,7 +230,7 @@ h1, h2, h3, h4, h5, h6,
 
 .eyebrow { display:inline-block; color: var(--accent-2); font-weight:700; letter-spacing:0.14em; text-transform:uppercase; font-size:0.78rem; }
 .about-title { margin: 0.6rem 0 0.8rem; font-size: clamp(1.75rem, 3.6vw, 2.5rem); line-height:1.05; color: var(--text); font-weight:800; }
-.lead { color: var(--muted); margin: 0.6rem 0; font-size:1.05rem; line-height:1.6; }
+.lead { color: var(--muted); margin: 0.6rem 0; font-size:2rem; line-height:1.6; }
 
 .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
 @media (max-width: 640px) { .about-stats { grid-template-columns: repeat(3, minmax(0,1fr)); } }
@@ -626,4 +626,15 @@ html {
   outline: 2px solid rgba(255,255,255,0.08);
   outline-offset: 4px;
 }
+
+/* Inline color / emphasis utilities */
+.text-accent      { color: var(--accent); font-weight: 700; }
+.text-accent-2    { color: var(--accent-2); font-weight: 700; }
+.text-muted       { color: var(--muted); }
+.text-strong      { color: var(--text); font-weight: 800; }
+.text-highlight   { background: rgba(242,184,14,0.12); color: var(--accent); padding: 0 .18rem; border-radius: 2px; }
+.small-caps       { font-variant: small-caps; letter-spacing: .06em; font-weight:600; }
+
+/* utility to avoid breaking layout when used inline */
+.inline-nowrap { display:inline-block; white-space:nowrap; }
 
