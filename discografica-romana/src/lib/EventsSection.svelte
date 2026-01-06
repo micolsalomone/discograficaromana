@@ -44,6 +44,9 @@
                 <div class="event-meta">
                   <time datetime={ev.start_at}>{formatDate(ev.start_at)}</time>
                   <span class="venue">{ev.location}</span>
+                  {#if ev.is_past}
+                    <span class="muted" style="margin-left:0.6rem">• passato</span>
+                  {/if}
                 </div>
                 <h3 id={"title-" + ev.id} class="event-title">{ev.title}</h3>
               </div>
@@ -81,8 +84,6 @@
 
   .card-body { padding: 0.75rem 1rem 1rem; }
   .event-meta { display:flex; gap:0.75rem; align-items:center; font-size:0.85rem; color:var(--muted); margin-bottom:0.4rem; }
-  .event-meta .icon { opacity:0.8; margin-right:0.35rem; }
-
   .event-title { margin:0; font-size:1rem; font-weight:700; color:var(--text); }
 
   .muted { color: var(--muted); }

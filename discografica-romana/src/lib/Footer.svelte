@@ -9,17 +9,14 @@
           Un collettivo creativo che unisce studi di registrazione, produttori di vinili, artisti indipendenti e realtà culturali.
         </p>
         <div class="socials">
-          <a href="#" class="social-btn" aria-label="Instagram">
-            <!-- instagram -->
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 6.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a href="/" class="social-btn" aria-label="Instagram">
+            <!-- instagram svg -->
           </a>
-          <a href="#" class="social-btn" aria-label="YouTube">
-            <!-- youtube -->
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 7.2s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-.9C15.5 4 12 4 12 4s-3.5 0-6.9.1c-.4 0-1.3 0-2.1.9C2.2 5.6 2 7.2 2 7.2S2 9 2 10.9v2.2C2 15 2 16.8 2 16.8s.2 1.6.8 2.3c.8.9 1.8.9 2.3 1 1.7.1 7.1.1 7.1.1s3.5 0 6.9-.1c.4 0 1.3 0 2.1-.9.6-.7.8-2.3.8-2.3S22 15 22 13.1V10.9C22 9 22 7.2 22 7.2z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 14.5l5-2.5-5-2.5v5z" fill="currentColor"/></svg>
+          <a href="/" class="social-btn" aria-label="YouTube">
+            <!-- youtube svg -->
           </a>
-          <a href="#" class="social-btn" aria-label="Mail">
-            <!-- mail -->
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 8.5v7a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 8l-9 6L3 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a href="/" class="social-btn" aria-label="Mail">
+            <!-- mail svg -->
           </a>
         </div>
       </div>
