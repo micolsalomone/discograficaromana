@@ -45,16 +45,18 @@
                 {:else}
                   <div class="event-image placeholder" aria-hidden="true"></div>
                 {/if}
-              </div>
-              <div class="card-body">
-                <div class="event-meta">
-                  <time datetime={ev.start_at}>{formatDate(ev.start_at)}</time>
-                  <span class="venue">{ev.location}</span>
-                  {#if ev.is_past}
-                    <span class="muted" style="margin-left:0.6rem">• passato</span>
-                  {/if}
+
+                <!-- poster-style caption overlay -->
+                <div class="poster-caption">
+                  <div class="event-meta">
+                    <time datetime={ev.start_at}>{formatDate(ev.start_at)}</time>
+                    <span class="venue">{ev.location}</span>
+                    {#if ev.is_past}
+                      <span class="muted" style="margin-left:0.6rem">• passato</span>
+                    {/if}
+                  </div>
+                  <h3 id={"title-" + ev.id} class="event-title poster">{ev.title}</h3>
                 </div>
-                <h3 id={"title-" + ev.id} class="event-title">{ev.title}</h3>
               </div>
             </a>
           </article>

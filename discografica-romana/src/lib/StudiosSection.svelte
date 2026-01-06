@@ -1,9 +1,6 @@
 <script lang="ts">
-  import { Mic, Music, Headphones, Radio } from "lucide-svelte";
   export let studios: any[] = []; // passed from server load
   export let loading: boolean = false;
-
-  const icons = [Mic, Music, Headphones, Radio];
 </script>
 
 <section id="studi" class="py-16">
@@ -19,42 +16,28 @@
     {:else if !studios || studios.length === 0}
       <div class="text-center py-12">Nessuno studio trovato.</div>
     {:else}
-      <div class="grid md:grid-cols-2 gap-8">
-        {#each studios as studio, idx}
-          <article class="event-card group overflow-hidden">
-            <div class="grid sm:grid-cols-2">
-              <div class="aspect-[5/3] sm:aspect-auto overflow-hidden">
-                <img src={studio.image_url ?? studio.image ?? '/placeholder.svg'} alt={studio.name} class="event-image" />
-              </div>
+      <!-- grid inside layout container: 2 col desktop, 1 col mobile; gap between cards -->
+      <div class="studios-grid">
+        {#each studios as studio}
+          <article class="studio-card">
+            <a href={"/studios/" + (studio.slug ?? studio.id)} class="studio-link" aria-label={"Apri " + studio.name}>
+              <img class="studio-img" src={studio.image_url ?? studio.image ?? '/placeholder.svg'} alt={studio.name} />
+              <div class="image-overlay" aria-hidden="true"></div>
 
-              <div class="card-body p-6 flex flex-col justify-center">
-                <div class="flex items-center gap-3 mb-3">
-                  <div class="w-10 h-10 rounded-full" style="background: rgba(255,90,122,0.08); display:flex; align-items:center; justify-content:center;">
-                    <svelte:component this={icons[idx % icons.length]} class="h-5 w-5" />
-                  </div>
-                  <h3 class="text-xl font-bold">{studio.name}</h3>
-                </div>
-
-                <p class="muted mb-4">{studio.description}</p>
-
-                <div class="flex flex-wrap gap-2">
-                  {#if Array.isArray(studio.services)}
-                    {#each studio.services as service}
-                      <span class="text-xs px-2 py-1" style="background: rgba(255,255,255,0.02); border-radius:6px;">{service}</span>
+              <div class="card-caption">
+                <h3 class="studio-title">{studio.name}</h3>
+                {#if studio.description}
+                  <p class="studio-desc">{studio.description}</p>
+                {/if}
+                {#if Array.isArray(studio.services) && studio.services.length}
+                  <div class="services">
+                    {#each studio.services as s}
+                      <span class="svc">{s}</span>
                     {/each}
-                  {:else if typeof studio.services === 'string'}
-                    <!-- try parse json string -->
-                    {#if (() => { try { JSON.parse(studio.services); return true; } catch { return false; } })()}
-                      {#each JSON.parse(studio.services) as service}
-                        <span class="text-xs px-2 py-1" style="background: rgba(255,255,255,0.02); border-radius:6px;">{service}</span>
-                      {/each}
-                    {:else}
-                      <span class="text-xs px-2 py-1" style="background: rgba(255,255,255,0.02); border-radius:6px;">{studio.services}</span>
-                    {/if}
-                  {/if}
-                </div>
+                  </div>
+                {/if}
               </div>
-            </div>
+            </a>
           </article>
         {/each}
       </div>
@@ -63,8 +46,123 @@
 </section>
 
 <style>
-  .event-card { background: transparent; border: 1px solid rgba(255,255,255,0.03); border-radius: 12px; overflow:hidden; transition: transform .28s ease, box-shadow .28s ease; }
-  .event-card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(0,0,0,0.35); border-color: rgba(255,255,255,0.06); }
-  .event-image { width:100%; height:100%; object-fit:cover; display:block; transition: transform .5s ease; }
-  .event-card:hover .event-image { transform: scale(1.03); }
+  /* Grid: contained in .container, 2 columns on desktop with gap between cards */
+  .studios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem; /* spacing between cards */
+    width: 100%;
+    /* no full-bleed, remains inside .container */
+  }
+
+  @media (max-width: 768px) {
+    .studios-grid {
+      grid-template-columns: 1fr; /* single column on small screens */
+    }
+  }
+
+  /* Cards: rounded, subtle border, spaced by grid gap */
+  .studio-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px; /* restored radius */
+    border: 1px solid rgba(255,255,255,0.03);
+    margin: 0;
+    display: block;
+    width: 100%;
+    height: 420px; /* poster-ish height */
+    background: var(--panel);
+    transition: transform .28s ease, box-shadow .28s ease;
+  }
+
+  @media (max-width: 900px) {
+    .studio-card { height: 320px; }
+  }
+
+  /* clickable area covers whole card */
+  .studio-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+  }
+  .studio-link:focus .card-caption { box-shadow: 0 0 0 3px rgba(242,184,14,0.12); border-radius: 8px; }
+
+  .studio-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: middle;
+    -webkit-user-drag: none;
+    transition: transform 450ms cubic-bezier(.2,.8,.2,1), filter 300ms;
+    will-change: transform, filter;
+  }
+
+  /* overlay for readability (base) */
+  .image-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    pointer-events: none;
+    background: linear-gradient(to top, rgba(0,0,0,0.62) 6%, rgba(0,0,0,0.38) 28%, rgba(0,0,0,0) 62%);
+    transition: background 280ms ease, opacity 280ms ease;
+  }
+
+  /* hover / focus interactions */
+  .studio-card:hover,
+  .studio-link:focus {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+  }
+  .studio-card:hover .studio-img,
+  .studio-link:focus .studio-img {
+    transform: scale(1.04);
+    filter: saturate(1.03) contrast(1.02);
+  }
+  .studio-card:hover .image-overlay,
+  .studio-link:focus .image-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.72) 6%, rgba(0,0,0,0.42) 28%, rgba(0,0,0,0) 62%);
+  }
+
+  /* Caption overlay positioned at bottom */
+  .card-caption {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 3;
+    color: #fff;
+    padding: 0;
+    display: block;
+  }
+
+  .studio-title {
+    margin: 0 0 0.25rem 0;
+    font-size: clamp(1.5rem, 3.2vw, 1.9rem);
+    font-weight: 800;
+    line-height: 1.02;
+    text-shadow: 0 8px 22px rgba(0,0,0,0.5);
+  }
+
+  .studio-desc {
+    margin: 0 0 0.5rem 0;
+    color: rgba(255,255,255,0.95);
+    font-size: 0.95rem;
+    max-width: 70ch;
+  }
+
+  .services { display:flex; gap:0.4rem; flex-wrap:wrap; margin-top:0.5rem; }
+  .svc {
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.95);
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+  }
 </style>
