@@ -6,9 +6,9 @@
 <section id="studi" class="py-16">
   <div class="container">
     <div class="text-center mb-12">
-      <span class="eyebrow">Studi</span>
-      <h2 class="about-title">I nostri spazi</h2>
-      <p class="lead">Quattro ambienti unici pensati per ogni fase del processo creativo</p>
+      <span class="eyebrow">Lo spazio</span>
+      <h2 class="about-title">Gli studi</h2>
+      <p class="lead">Ci trovi all'interno di <a href="/muziki-factory" target="_blank" rel="noopener noreferrer">Muziki Factory</a> a Formello (RM), spazio polifunzionale che accoglie 8 studi, una sala eventi e una fabbrica del Vinile.</p>
     </div>
 
     {#if loading}
