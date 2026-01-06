@@ -43,6 +43,8 @@
 
 <style>
   :global(.about-section) { padding: 6rem 0; }
+  /* ensure anchor scroll lands below the fixed navbar */
+  :global(#chi-siamo) { scroll-margin-top: var(--topbar-height, 72px); }
   .about-inner { max-width: var(--container-width); margin: 0 auto; padding: 0 2rem; }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
   @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } .about-media { order: -1; } }

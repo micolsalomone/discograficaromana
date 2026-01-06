@@ -9,7 +9,7 @@
 
 <Hero />
 
-<section class="container">
+<section id="main" class="container">
   <AboutSection />
   <!-- added studios section on homepage -->
   <StudiosSection studios={data.studios} />
