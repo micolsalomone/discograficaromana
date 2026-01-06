@@ -9,5 +9,6 @@
 <section class="container">
   <Hero />
   <AboutSection />
-  <EventsSection events={data.events} loading={false} />
+  <!-- show only 4 events on the homepage -->
+  <EventsSection events={data.events} loading={false} maxItems={4} showAll={true} />
 </section>
