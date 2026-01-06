@@ -18,17 +18,28 @@ export const load: PageServerLoad = async ({ locals }) => {
       .order('start_at', { ascending: false })
       .limit(500);
 
+    // fetch studios
+    const { data: studiosData, error: errStudios } = await locals.supabase
+      .from('studios')
+      .select('id,name,description,services,image_url,slug,created_at')
+      .order('created_at', { ascending: false })
+      .limit(50);
+
     if (errUp || errPast) {
       console.error('Supabase load events error', errUp ?? errPast);
-      return { events: [] };
+      return { events: [], studios: studiosData ?? [] };
+    }
+
+    if (errStudios) {
+      console.error('Supabase load studios error', errStudios);
     }
 
     const mappedUpcoming = (upcoming ?? []).map(e => ({ ...e, is_past: false }));
     const mappedPast = (past ?? []).map(e => ({ ...e, is_past: true }));
 
-    return { events: [...mappedUpcoming, ...mappedPast] };
+    return { events: [...mappedUpcoming, ...mappedPast], studios: studiosData ?? [] };
   } catch (e) {
     console.error('Load events failed', e);
-    return { events: [] };
+    return { events: [], studios: [] };
   }
 };
