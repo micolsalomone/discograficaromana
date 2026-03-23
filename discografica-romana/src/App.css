@@ -639,3 +639,207 @@ html {
 /* utility to avoid breaking layout when used inline */
 .inline-nowrap { display:inline-block; white-space:nowrap; }
 
+/* --- STUDIOS SECTION (FIGMA DESIGN) --- */
+/* make the contained area wider than the standard container to give photos more space */
+.studios-wrap {
+  width: calc(100% + 480px);
+  max-width: none;
+  margin-left: -240px;
+  padding-left: 240px;
+  padding-right: 240px;
+}
+
+/* inner surface holds the image and overlays, clips content */
+.studio-surface {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  background: var(--panel);
+  display: block;
+}
+
+.studios-grid-figma {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+.studio-card-figma {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  background: var(--panel);
+  cursor: pointer;
+  overflow: hidden; /* Clip content */
+}
+
+/* caption overlay positioned at bottom inside the clipped surface */
+.card-caption {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 3;
+  color: #fff;
+  padding: 0;
+  display: block;
+}
+
+
+.studio-card-figma .studio-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.studio-card-figma .studio-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Overlays container */
+.studio-card-figma .overlays {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Dark overlay (80% opacity) */
+.studio-card-figma .overlays::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+/* Accent overlay (10% opacity) */
+.studio-card-figma .overlays::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease;
+}
+
+/* Numbered icon */
+.studio-card-figma .number-icon {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 64px;
+  height: 64px;
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: top left;
+}
+
+/* Card content */
+.studio-card-figma .card-content {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  z-index: 2;
+  color: #fff;
+}
+
+.studio-card-figma .studio-title {
+  font-family: 'AMTripoli', var(--font-sans);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.1;
+  font-weight: 400;
+  margin: 0;
+}
+
+.studio-card-figma .studio-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  opacity: 0; /* Hidden by default */
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.studio-card-figma .service-tag {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* --- HOVER & ACTIVE STATES --- */
+.studio-card-figma.active,
+.studio-card-figma:hover {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.studio-card-figma.active .studio-img,
+.studio-card-figma:hover .studio-img {
+  transform: scale(1.05);
+}
+
+.studio-card-figma.active .overlays::before,
+.studio-card-figma:hover .overlays::before {
+  opacity: 0.8; /* Stays at 80% */
+}
+
+.studio-card-figma.active .overlays::after,
+.studio-card-figma:hover .overlays::after {
+  opacity: 0.1; /* Accent overlay becomes visible */
+}
+
+.studio-card-figma.active .number-icon,
+.studio-card-figma:hover .number-icon {
+  transform: scale(1.1);
+}
+
+.studio-card-figma.active .studio-services,
+.studio-card-figma:hover .studio-services {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+ @media (max-width: 1100px) {
+    .studios-wrap {
+      width: calc(100% + 240px);
+      margin-left: -120px;
+      padding-left: 120px;
+      padding-right: 120px;
+    }
+  }
+  @media (max-width: 640px) {
+    .studios-wrap {
+      width: 100%;
+      margin-left: 0;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+  .studios-grid-figma { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .studios-grid-figma { grid-template-columns: 1fr; }
+  .studio-card-figma .number-icon { width: 56px; height: 56px; top: 1rem; left: 1rem; }
+  .studio-card-figma .card-content { bottom: 1rem; left: 1rem; right: 1rem; }
+}
+
