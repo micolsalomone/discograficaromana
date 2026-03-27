@@ -26,8 +26,8 @@
         <h2 class="events-title">Prossimi appuntamenti</h2>
       </div>
       {#if showAll}
-        <a href="/events" class="events-all">Vedi tutti gli eventi</a>
-      {/if}
+          <a href="#eventi" class="events-all">Vedi tutti gli eventi</a>
+        {/if}
     </div>
 
     {#if loading}
@@ -38,7 +38,7 @@
       <div class="events-grid" role="list">
         {#each displayed as ev}
           <article class="event-card" role="listitem" aria-labelledby={"title-" + ev.id}>
-            <a href={"/events/" + ev.id} class="event-link" aria-label={ev.title}>
+            <a href={"#event-" + ev.id} class="event-link" aria-label={ev.title}>
               <div class="event-image-wrap">
                 {#if ev.image_url}
                   <img src={ev.image_url} alt={ev.title} class="event-image" />

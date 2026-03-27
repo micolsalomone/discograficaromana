@@ -37,7 +37,7 @@
               aria-label={`Visualizza dettagli per ${studio.name}`}
               on:click={() => toggleActive(studio.id)}
             ></button>
-            <a href={"/studios/" + (studio.slug ?? studio.id)} class="studio-link" aria-hidden="true" tabindex="-1">
+            <a href={"#studio-" + (studio.slug ?? studio.id)} class="studio-link" aria-hidden="true" tabindex="-1">
               <img class="studio-img" src={studio.image_url ?? '/placeholder.svg'} alt={studio.name} />
               <div class="overlays"></div>
 

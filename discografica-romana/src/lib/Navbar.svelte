@@ -4,9 +4,7 @@
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "#eventi", label: "Eventi" },
-    { href: "#artisti", label: "Artisti" },
     { href: "#studi", label: "Studi" },
-    { href: "#pubblicazioni", label: "Pubblicazioni" },
     { href: "#contatti", label: "Contatti" },
   ];
 

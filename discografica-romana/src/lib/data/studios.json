@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "name": "Studio Centrale",
+    "slug": "studio-centrale",
+    "description": "Studio di registrazione con attrezzatura completa",
+    "services": ["Registrazione","Mix","Mastering"],
+    "image_url": "./images/studio-sample.jpg",
+    "created_at": "2025-10-01T12:00:00.000Z"
+  }
+]
