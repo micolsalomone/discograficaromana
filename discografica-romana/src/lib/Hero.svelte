@@ -2,13 +2,13 @@
   import { onMount } from "svelte";
   import { base } from "$app/paths";
 
-  const posterSrc = `${base}/images/poster.jpeg`;
+  const posterSrc = `${base}/images/poster.jpg`;
   const videoSrc = `${base}/video/1920x1080_orange2.mp4`;
 
   let heroVideo: HTMLVideoElement | undefined;
   let shouldRenderVideo = true;
-  let isVideoPlaying = false;
-  let autoplayFallbackTimeout: ReturnType<typeof window.setTimeout> | undefined;
+  let shouldUseAutoplayFallback = false;
+  let autoplayFallbackTimeout: number | undefined;
 
   function clearAutoplayFallback() {
     if (autoplayFallbackTimeout) {
@@ -17,15 +17,8 @@
     }
   }
 
-  function markVideoAsPlaying() {
-    isVideoPlaying = true;
-    shouldRenderVideo = true;
-    clearAutoplayFallback();
-  }
-
   function fallbackToPoster() {
     shouldRenderVideo = false;
-    isVideoPlaying = false;
     clearAutoplayFallback();
   }
 
@@ -34,39 +27,37 @@
       return;
     }
 
-    const handlePlaybackStart = () => {
-      markVideoAsPlaying();
+    const handlePlaybackError = () => {
+      if (shouldUseAutoplayFallback) {
+        fallbackToPoster();
+      }
     };
 
-    const handlePlaybackError = () => {
-      fallbackToPoster();
-    };
+    shouldUseAutoplayFallback = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     heroVideo.defaultMuted = true;
     heroVideo.muted = true;
     heroVideo.playsInline = true;
     heroVideo.setAttribute("webkit-playsinline", "true");
 
-    heroVideo.addEventListener("playing", handlePlaybackStart);
-    heroVideo.addEventListener("canplay", handlePlaybackStart);
-    heroVideo.addEventListener("loadeddata", handlePlaybackStart);
     heroVideo.addEventListener("error", handlePlaybackError);
 
-    autoplayFallbackTimeout = window.setTimeout(() => {
-      if (!isVideoPlaying) {
-        fallbackToPoster();
-      }
-    }, 1800);
+    if (shouldUseAutoplayFallback) {
+      autoplayFallbackTimeout = window.setTimeout(() => {
+        if (heroVideo && (heroVideo.paused || heroVideo.readyState < HTMLMediaElement.HAVE_CURRENT_DATA)) {
+          fallbackToPoster();
+        }
+      }, 1800);
+    }
 
     heroVideo.play().catch(() => {
-      fallbackToPoster();
+      if (shouldUseAutoplayFallback) {
+        fallbackToPoster();
+      }
     });
 
     return () => {
       clearAutoplayFallback();
-      heroVideo?.removeEventListener("playing", handlePlaybackStart);
-      heroVideo?.removeEventListener("canplay", handlePlaybackStart);
-      heroVideo?.removeEventListener("loadeddata", handlePlaybackStart);
       heroVideo?.removeEventListener("error", handlePlaybackError);
     };
   });
@@ -78,7 +69,6 @@
   {#if shouldRenderVideo}
     <video
       bind:this={heroVideo}
-      class:hero-video-hidden={!isVideoPlaying}
       class="hero-video"
       autoplay
       muted
