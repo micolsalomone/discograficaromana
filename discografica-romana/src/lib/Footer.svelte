@@ -37,7 +37,7 @@
           <li class="contact-item">
             <!-- map pin -->
             <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-4.5 7-11a7 7 0 10-14 0c0 6.5 7 11 7 11z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 11.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"/></svg>
-            <span>Via del Pigneto 40<br/>00176 Roma, Italia</span>
+            <span>Via di Santa Cornelia, 11<br/>00060 Formello RM</span>
           </li>
           <li class="contact-item">
             <!-- mail icon -->
