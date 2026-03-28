@@ -3,8 +3,7 @@
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "#eventi", label: "Eventi" },
-    { href: "#studi", label: "Studi" },
+    { href: "#chi-siamo", label: "Chi Siamo" },
     { href: "#contatti", label: "Contatti" },
   ];
 

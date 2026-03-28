@@ -3,32 +3,26 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="/" class="brand-link">
-          <span class="brand-text"><span class="brand-accent">D</span>iscografica <span class="brand-accent">R</span>omana</span>
+          <img src="/images/logo.png" alt="Discografica Romana" class="footer-logo" />
         </a>
         <p class="footer-desc">
           Un collettivo creativo che unisce studi di registrazione, produttori di vinili, artisti indipendenti e realtà culturali.
         </p>
         <div class="socials">
-          <a href="/" class="social-btn" aria-label="Instagram">
-            <!-- instagram svg -->
-          </a>
-          <a href="/" class="social-btn" aria-label="YouTube">
-            <!-- youtube svg -->
-          </a>
-          <a href="/" class="social-btn" aria-label="Mail">
-            <!-- mail svg -->
+          <a
+            href="https://instagram.com/discograficaromana"
+            class="social-btn"
+            aria-label="Instagram di Discografica Romana"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+            </svg>
           </a>
         </div>
-      </div>
-
-      <div class="footer-links">
-        <h3>Navigazione</h3>
-        <ul>
-          <li><a href="#eventi" class="link">Eventi</a></li>
-          <li><a href="#artisti" class="link">Artisti</a></li>
-          <li><a href="#studi" class="link">Studi</a></li>
-          <li><a href="#pubblicazioni" class="link">Pubblicazioni</a></li>
-        </ul>
       </div>
 
       <div class="footer-contact">
@@ -50,10 +44,6 @@
 
     <div class="footer-bottom">
       <p class="copyright">© 2025 Discografica Romana. Tutti i diritti riservati.</p>
-      <div class="policy-links">
-        <a href="#" class="link">Privacy Policy</a>
-        <a href="#" class="link">Cookie Policy</a>
-      </div>
     </div>
   </div>
 </footer>

@@ -13,14 +13,10 @@
       <h1 class="hero-title">Lo spazio delle possibilità</h1>
       <p class="lead">Artisti e filiera tecnologica del suono sotto lo stesso tetto.</p>
 
-      <div class="hero-actions">
-        <a class="btn primary" href="/events" role="button">Scopri gli Eventi</a>
-        <a class="btn" href="/about" role="button">Conosci il Collettivo</a>
-      </div>
     </div>
 
     <!-- scroll indicator (replaced) -->
-    <a href="#chi-siamo" class="arrow-container" aria-label="Scorri al contenuto" role="link">
+    <a href="#chi-siamo" class="arrow-container" aria-label="Scorri al contenuto">
       <div class="arrow-2" aria-hidden="true">
         <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 5v12" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

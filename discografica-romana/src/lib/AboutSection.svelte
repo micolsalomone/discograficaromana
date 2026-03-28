@@ -1,5 +1,35 @@
 <script>
-  // no script needed for static content
+  import { onDestroy, onMount } from "svelte";
+  import { fade } from "svelte/transition";
+
+  const images = [
+    "/images/1.png",
+    "/images/2.png",
+    "/images/3.png",
+    "/images/4.png",
+    "/images/5.png",
+    "/images/6.png",
+    "/images/7.png",
+    "/images/8.png",
+  ];
+
+  const intervalMs = 4000;
+  const fadeMs = 500;
+
+  let currentIndex = 0;
+  let intervalId = 0;
+
+  onMount(() => {
+    intervalId = window.setInterval(() => {
+      currentIndex = (currentIndex + 1) % images.length;
+    }, intervalMs);
+  });
+
+  onDestroy(() => {
+    if (intervalId) {
+      window.clearInterval(intervalId);
+    }
+  });
 </script>
 
 <section id="chi-siamo" class="about-section">
@@ -33,8 +63,19 @@ Discografica Romana è un ecosistema culturale in cui la produzione musicale ind
       </div>
 
       <div class="about-media">
+        <div class="about-slideshow" aria-live="polite" aria-label="Galleria immagini Discografica Romana">
+          {#key images[currentIndex]}
+            <img
+              class="about-slide"
+              src={images[currentIndex]}
+              alt={`Discografica Romana - immagine ${currentIndex + 1} di ${images.length}`}
+              in:fade={{ duration: fadeMs }}
+              out:fade={{ duration: fadeMs }}
+            />
+          {/key}
+        </div>
         <div class="media-overlay" aria-hidden="true"></div>
-        <img src="/recording-studio-dark-moody-vinyl-records-analog-e.jpg" alt="Studio di registrazione Discografica Romana" />
+        <div class="sr-only" aria-live="polite">Immagine {currentIndex + 1} di {images.length}</div>
       </div>
     </div>
   </div>
