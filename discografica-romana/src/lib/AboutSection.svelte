@@ -1,15 +1,16 @@
 <script>
+  import { base } from "$app/paths";
   import { onDestroy, onMount } from "svelte";
   import { fade } from "svelte/transition";
 
   const images = [
-    "/images/1.jpeg",
-    "/images/2.jpeg",
-    "/images/3.jpeg",
-    "/images/4.jpeg",
-    "/images/5.jpeg",
-    "/images/6.jpeg",
-    "/images/7.jpeg",
+    `${base}/images/1.jpeg`,
+    `${base}/images/2.jpeg`,
+    `${base}/images/3.jpeg`,
+    `${base}/images/4.jpeg`,
+    `${base}/images/5.jpeg`,
+    `${base}/images/6.jpeg`,
+    `${base}/images/7.jpeg`,
   ];
 
   const intervalMs = 4000;

@@ -8,6 +8,9 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
+		paths: {
+			base: '/discograficaromana'
+		},
 		adapter: adapter({ pages: 'build', assets: 'build', fallback: '404.html' }),
 		prerender: { entries: ['*'] }
 	}

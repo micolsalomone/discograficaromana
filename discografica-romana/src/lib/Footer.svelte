@@ -1,9 +1,15 @@
+<script>
+  import { base } from "$app/paths";
+
+  const homeHref = `${base}/`;
+</script>
+
 <footer id="contatti" class="site-footer">
   <div class="container footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="/" class="brand-link">
-          <img src="/images/logo.png" alt="Discografica Romana" class="footer-logo" />
+        <a href={homeHref} class="brand-link">
+          <img src={`${base}/images/logo.png`} alt="Discografica Romana" class="footer-logo" />
         </a>
         <p class="footer-desc">
           Un collettivo creativo che unisce studi di registrazione, produttori di vinili, artisti indipendenti e realtà culturali.
@@ -47,7 +53,3 @@
     </div>
   </div>
 </footer>
-
-<script>
-  // no script needed
-</script>

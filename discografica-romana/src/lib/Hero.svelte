@@ -1,10 +1,10 @@
 <script>
-  // minimal hero with video background
+  import { base } from "$app/paths";
 </script>
 
 <section class="hero-minimal" aria-label="Hero">
-  <video class="hero-video" autoplay muted loop playsinline poster="/images/hero-poster.jpg">
-    <source src="/video/1920x1080_orange2.mp4" type="video/mp4" />
+  <video class="hero-video" autoplay muted loop playsinline poster={`${base}/images/hero-poster.jpg`}>
+    <source src={`${base}/video/1920x1080_orange2.mp4`} type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 

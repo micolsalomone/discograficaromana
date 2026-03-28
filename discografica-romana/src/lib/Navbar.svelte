@@ -1,8 +1,11 @@
 <script>
+  import { base } from "$app/paths";
   import { onMount, onDestroy } from "svelte";
 
+  const homeHref = `${base}/`;
+
   const navLinks = [
-    { href: "/", label: "Home" },
+    { href: homeHref, label: "Home" },
     { href: "#chi-siamo", label: "Chi Siamo" },
     { href: "#contatti", label: "Contatti" },
   ];
@@ -31,8 +34,8 @@
 
 <nav class="navbar" class:scrolled={isScrolled} aria-label="Main">
   <div class="nav-inner container">
-    <a href="/" class="brand" aria-label="Home">
-      <img src="/images/logo.png" alt="Discografica Romana" class="brand-img" height="60px" />
+    <a href={homeHref} class="brand" aria-label="Home">
+      <img src={`${base}/images/logo.png`} alt="Discografica Romana" class="brand-img" height="60px" />
     </a>
 
     <div class="navlinks desktop">
