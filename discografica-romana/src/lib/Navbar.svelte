@@ -6,8 +6,9 @@
 
   const navLinks = [
     { href: homeHref, label: "Home" },
-    { href: "#chi-siamo", label: "Chi Siamo" },
-    { href: "#contatti", label: "Contatti" },
+    { href: `${homeHref}#chi-siamo`, label: "Chi Siamo" },
+    { href: `${homeHref}#i-nostri-spazi`, label: "I Nostri Spazi" },
+    { href: `${homeHref}#contatti`, label: "Contatti" },
   ];
 
   let isOpen = false;
@@ -100,9 +101,9 @@
     transform: translateY(-1px);
   }
 
-  @media (max-width: 800px) {
-    .desktop { display:none; }
-    .mobile-toggle { display:inline-flex; }
+  @media (max-width: 1200px) {
+    .desktop { display:none !important; }
+    .mobile-toggle { display:inline-flex !important; }
     .navbar.scrolled .brand-img { height: 36px; } /* dimensione mobile leggermente più piccola */
   }
 </style>

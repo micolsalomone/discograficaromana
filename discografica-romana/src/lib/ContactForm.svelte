@@ -1,12 +1,15 @@
 <script lang="ts">
+  import { base } from '$app/paths';
   import { PUBLIC_WEB3FORMS_KEY } from '$env/static/public';
   import { createEventDispatcher } from 'svelte';
 
   const dispatch = createEventDispatcher();
+  const privacyHref = `${base}/privacy-policy`;
 
   let name = '';
   let email = '';
   let message = '';
+  let consent = false;
   let loading = false;
   let success = false;
   let error: string | null = null;
@@ -16,6 +19,12 @@
     loading = true;
     success = false;
     error = null;
+
+    if (!consent) {
+      error = 'Devi accettare il trattamento dati per inviare il messaggio.';
+      loading = false;
+      return;
+    }
 
     const fd = new FormData();
     fd.append('access_key', PUBLIC_WEB3FORMS_KEY ?? '');
@@ -74,8 +83,22 @@
         <textarea id="cf-message" name="message" required bind:value={message} rows="6"></textarea>
       </div>
 
+      <div class="field field-checkbox">
+        <label for="cf-consent" class="checkbox-label">
+          <input id="cf-consent" name="consent" type="checkbox" required bind:checked={consent} />
+          <span>
+            Acconsento al trattamento dei dati personali per ricevere risposta alla mia richiesta, come descritto
+            nella <a class="policy-link" href={privacyHref}>Privacy Policy</a>.
+          </span>
+        </label>
+      </div>
+
+      <p class="privacy-note">
+        Usiamo i dati del modulo solo per gestire la tua richiesta di contatto.
+      </p>
+
       <div class="actions">
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading || !consent}>
           {#if loading}Invio in corso…{:else}Invia richiesta{/if}
         </button>
       </div>
@@ -157,7 +180,7 @@
     text-transform: uppercase;
   }
 
-  input,
+  input:not([type='checkbox']),
   textarea {
     width: 100%;
     box-sizing: border-box;
@@ -174,7 +197,7 @@
     color: rgba(255, 255, 255, 0.35);
   }
 
-  input:focus-visible,
+  input:not([type='checkbox']):focus-visible,
   textarea:focus-visible {
     outline: 2px solid rgba(242, 184, 14, 0.8);
     outline-offset: 2px;
@@ -184,6 +207,57 @@
   textarea {
     resize: vertical;
     min-height: 140px;
+  }
+
+  .field-checkbox {
+    border: 1px solid rgba(242, 184, 14, 0.3);
+    border-radius: 6px;
+    background: rgba(242, 184, 14, 0.08);
+    padding: 0.75rem 0.85rem;
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  input[type='checkbox'] {
+    margin-top: 0.15rem;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  input[type='checkbox']:focus-visible {
+    outline: 2px solid rgba(242, 184, 14, 0.8);
+    outline-offset: 2px;
+  }
+
+  .policy-link {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 700;
+  }
+
+  .policy-link:hover {
+    color: #ffe09a;
+  }
+
+  .privacy-note {
+    margin: -0.2rem 0 0;
+    color: rgba(236, 239, 241, 0.75);
+    font-size: 0.92rem;
+    line-height: 1.45;
   }
 
   .actions {

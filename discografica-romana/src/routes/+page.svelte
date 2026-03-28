@@ -2,6 +2,7 @@
 <script lang="ts">
   import Hero from '$lib/Hero.svelte';
   import AboutSection from '$lib/AboutSection.svelte';
+  import StatsSection from '$lib/StatsSection.svelte';
   import ContactForm from '$lib/ContactForm.svelte';
 </script>
 
@@ -9,6 +10,7 @@
 
 <section id="main" class="container">
   <AboutSection />
+  <StatsSection />
   <ContactForm />
 
   <section class="home-cta" aria-label="Contatto diretto email">

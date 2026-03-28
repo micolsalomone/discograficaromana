@@ -45,21 +45,6 @@
 Discografica Romana è un ecosistema culturale in cui la produzione musicale indipendente diventa sostenibile, 
           condivisa e tecnicamente evoluta.
         </p>
-
-        <div class="about-stats">
-          <div class="stat">
-            <div class="stat-num">25+</div>
-            <div class="stat-label">Artisti</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">100+</div>
-            <div class="stat-label">Release</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">4</div>
-            <div class="stat-label">Studi</div>
-          </div>
-        </div>
       </div>
 
       <div class="about-media">

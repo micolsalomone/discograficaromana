@@ -2,6 +2,7 @@
   import { base } from "$app/paths";
 
   const homeHref = `${base}/`;
+  const privacyHref = `${base}/privacy-policy`;
 </script>
 
 <footer id="contatti" class="site-footer">
@@ -50,6 +51,12 @@
 
     <div class="footer-bottom">
       <p class="copyright">© 2025 Discografica Romana. Tutti i diritti riservati.</p>
+      <div class="policy-links">
+        <a href={privacyHref} class="link">Privacy Policy</a>
+        <a href="mailto:info@discograficaromana.it?subject=Richiesta%20cancellazione%20dati" class="link">
+          Richiedi cancellazione dati
+        </a>
+      </div>
     </div>
   </div>
 </footer>
