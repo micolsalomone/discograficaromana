@@ -13,6 +13,8 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      PUBLIC_WEB3FORMS_KEY: ${{ vars.PUBLIC_WEB3FORMS_KEY != '' && vars.PUBLIC_WEB3FORMS_KEY || secrets.PUBLIC_WEB3FORMS_KEY }}
     defaults:
       run:
         working-directory: discografica-romana
@@ -27,6 +29,13 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Validate required public env
+        run: |
+          if [ -z "$PUBLIC_WEB3FORMS_KEY" ]; then
+            echo "PUBLIC_WEB3FORMS_KEY mancante: imposta una Repository Variable o Secret in Settings > Secrets and variables > Actions"
+            exit 1
+          fi
 
       - name: Build site
         run: npm run build
