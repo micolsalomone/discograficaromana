@@ -364,8 +364,21 @@ h1, h2, h3, h4, h5, h6,
     padding: 4.2rem 0 1.4rem;
   }
 
+  .about-inner {
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+  }
+
+  .about-grid {
+    gap: 1rem;
+  }
+
   .about-content {
-    padding: 1.15rem 1rem;
+    padding: 0.55rem 0.2rem 0;
+  }
+
+  .about-media {
+    min-height: 420px;
   }
 
   .stats-section {
@@ -416,8 +429,17 @@ h1, h2, h3, h4, h5, h6,
 }
 
 @media (max-width: 420px) {
+  .about-inner {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+  }
+
   .about-content {
-    padding: 1rem 0.9rem;
+    padding: 0.45rem 0.1rem 0;
+  }
+
+  .about-media {
+    min-height: 360px;
   }
 
   .stats-grid {
