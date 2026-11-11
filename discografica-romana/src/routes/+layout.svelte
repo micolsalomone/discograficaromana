@@ -1,14 +1,15 @@
 <script lang="ts">
     import './layout.css';
     import '../App.css';
-    import favicon from '$lib/assets/favicon.svg';
+    import { base } from '$app/paths';
     import Navbar from '$lib/Navbar.svelte';
     import Footer from '$lib/Footer.svelte';
 
 </script>
 
 <svelte:head>
-    <link rel="icon" href={favicon} />
+    <link rel="icon" type="image/png" href={`${base}/images/discografica_profilo.png`} />
+    <link rel="apple-touch-icon" href={`${base}/images/discografica_profilo.png`} />
 </svelte:head>
 
 <Navbar />
