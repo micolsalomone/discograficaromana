@@ -1,7 +1,8 @@
 <script lang="ts">
   import { base } from '$app/paths';
-  import { PUBLIC_WEB3FORMS_KEY } from '$env/static/public';
   import { createEventDispatcher } from 'svelte';
+
+  const FORM_ENDPOINT = 'https://formspree.io/f/xvkaozep';
 
   const dispatch = createEventDispatcher();
   const privacyHref = `${base}/privacy-policy`;
@@ -10,6 +11,7 @@
   let email = '';
   let message = '';
   let consent = false;
+  let honeypot = '';
   let loading = false;
   let success = false;
   let error: string | null = null;
@@ -27,26 +29,30 @@
     }
 
     const fd = new FormData();
-    fd.append('access_key', PUBLIC_WEB3FORMS_KEY ?? '');
-    fd.append('subject', 'Contatto da landing');
+    fd.append('_gotcha', honeypot);
+    fd.append('_subject', 'Contatto da landing');
     fd.append('name', name);
     fd.append('email', email);
     fd.append('message', message);
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch(FORM_ENDPOINT, {
         method: 'POST',
-        body: fd
+        body: fd,
+        headers: { Accept: 'application/json' }
       });
-      const json = await res.json();
-      if (res.ok && json.success) {
+      const json = await res.json().catch(() => ({}));
+      if (res.ok) {
         success = true;
         name = '';
         email = '';
         message = '';
         dispatch('sent');
       } else {
-        error = json.message || JSON.stringify(json);
+        error =
+          json.errors?.map((e: { message: string }) => e.message).join(', ') ||
+          json.error ||
+          'Invio non riuscito. Riprova tra poco.';
       }
     } catch (err) {
       error = (err as Error).message;
@@ -97,6 +103,11 @@
         Usiamo i dati del modulo solo per gestire la tua richiesta di contatto.
       </p>
 
+      <div class="hp" aria-hidden="true">
+        <label for="cf-website">Non compilare questo campo</label>
+        <input id="cf-website" type="text" tabindex="-1" autocomplete="off" bind:value={honeypot} />
+      </div>
+
       <div class="actions">
         <button type="submit" disabled={loading || !consent}>
           {#if loading}Invio in corso…{:else}Invia richiesta{/if}
@@ -115,6 +126,14 @@
 </section>
 
 <style>
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
   #contatti {
     margin: 3rem auto 2rem;
     max-width: 960px;

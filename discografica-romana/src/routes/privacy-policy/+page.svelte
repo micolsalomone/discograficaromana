@@ -32,6 +32,21 @@
       espresso tramite la checkbox dedicata nel form.
     </p>
 
+    <h2>Servizi di terze parti</h2>
+    <p>
+      Per gestire il modulo contatti ci avvaliamo di <strong>Formspree</strong> (Formspree, Inc., Stati Uniti), che
+      riceve i dati inseriti nel modulo (nome, email, messaggio) e ce li inoltra via email, trattandoli per nostro
+      conto. Maggiori informazioni:
+      <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer"
+        >informativa privacy di Formspree</a
+      >.
+    </p>
+    <p>
+      Formspree puo trattare i dati anche al di fuori dello Spazio Economico Europeo, in particolare negli Stati Uniti,
+      con le garanzie previste dalla normativa applicabile (ad esempio le clausole contrattuali standard o il Data
+      Privacy Framework UE-USA).
+    </p>
+
     <h2>Conservazione</h2>
     <p>I dati sono conservati per il tempo necessario a evadere la richiesta e comunque per non oltre 12 mesi.</p>
 
@@ -47,7 +62,7 @@
       <a href="mailto:info@discograficaromana.it?subject=Richiesta%20cancellazione%20dati">info@discograficaromana.it</a>.
     </p>
 
-    <p class="privacy-updated">Ultimo aggiornamento: 28 marzo 2026.</p>
+    <p class="privacy-updated">Ultimo aggiornamento: 11 novembre 2026.</p>
 
     <p class="privacy-back">
       <a href={`${base}/#contatti`}>Torna alla home</a>

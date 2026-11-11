@@ -7,15 +7,10 @@ Landing page realizzata con SvelteKit e build statica per deploy su GitHub Pages
 - Node.js 18+
 - npm
 
-## Variabili ambiente
+## Form contatti
 
-Nel file `.env` serve solo:
-
-```dotenv
-PUBLIC_WEB3FORMS_KEY=...
-```
-
-Questa chiave viene usata dal form contatti in homepage.
+Il form in homepage invia a Formspree (endpoint pubblico in `src/lib/ContactForm.svelte`).
+Non servono variabili ambiente né chiavi API.
 
 ## Sviluppo locale
 
