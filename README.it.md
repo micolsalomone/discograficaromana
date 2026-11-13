@@ -76,6 +76,10 @@ Il dominio personalizzato è configurato tramite il file [`static/CNAME`](discog
 
 Il sito non usa cookie di profilazione. Le informazioni sul trattamento dei dati inviati tramite il form sono nella pagina `/privacy-policy`.
 
+## Crediti
+
+Il video di copertina (`static/video/1920x1080_orange2.mp4`) e la sua immagine di anteprima sono stati realizzati da **Jacopo Mancini**, membro di Discografica Romana. Tutti i diritti appartengono a Discografica Romana e i contenuti **non possono essere utilizzati**, copiati, modificati o distribuiti da altri senza autorizzazione scritta. I canali ufficiali di Jacopo sono Instagram [@jacopomancini_ar](https://www.instagram.com/jacopomancini_ar/) e [replayfilmaker.com](https://replayfilmaker.com).
+
 ## Logo e marchio
 
 Il nome, il logo e l'identità visiva di **Discografica Romana** sono di proprietà esclusiva dell'etichetta e **non possono essere utilizzati**, copiati, modificati o distribuiti, in tutto o in parte, senza autorizzazione scritta. Questo vale anche per i fork e per i progetti derivati di questo repository: se riutilizzi il codice, rimuovi il logo (`static/images/logo.png`, `discografica_profilo.png`, favicon) e ogni riferimento al marchio.
