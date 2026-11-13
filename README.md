@@ -1,42 +1,44 @@
 # Discografica Romana
 
-Sito web ufficiale di **Discografica Romana**: una landing page statica che presenta la filiera musicale completa dell'etichetta (studi, produzione, eventi) e raccoglie i contatti di chi vuole proporre un progetto.
+🇬🇧 English · **[Italiano](README.it.md)**
 
-🌐 **Online:** [discograficaromana.it](https://discograficaromana.it)
+Official website of **Discografica Romana**: a static landing page presenting the label's complete music pipeline (studios, production, events) and collecting contact requests from people who want to submit a project.
 
-> Questo è il branch `landing-page`: contiene la landing page statica in produzione.
-> Il branch `main` ospita la versione completa dell'applicazione (eventi, studi, area admin con Supabase).
+🌐 **Live:** [discograficaromana.it](https://discograficaromana.it)
 
-## Stack
+> This is the `landing-page` branch: it contains the static landing page running in production.
+> The `main` branch holds the full application (events, studios, admin area with Supabase).
 
-| Ambito | Tecnologia |
+## Tech stack
+
+| Area | Technology |
 | --- | --- |
 | Framework | [SvelteKit 2](https://svelte.dev/docs/kit) + [Svelte 5](https://svelte.dev) |
-| Linguaggio | TypeScript |
-| Stile | [Tailwind CSS 4](https://tailwindcss.com) |
-| Icone | [lucide-svelte](https://lucide.dev) |
-| Build | `@sveltejs/adapter-static` (output completamente statico) |
-| Form contatti | [Formspree](https://formspree.io) |
+| Language | TypeScript |
+| Styling | [Tailwind CSS 4](https://tailwindcss.com) |
+| Icons | [lucide-svelte](https://lucide.dev) |
+| Build | `@sveltejs/adapter-static` (fully static output) |
+| Contact form | [Formspree](https://formspree.io) |
 | Component dev | Storybook 10 |
-| Hosting | GitHub Pages con dominio personalizzato |
+| Hosting | GitHub Pages with a custom domain |
 
-## Struttura del repository
+## Repository structure
 
 ```
 .
-├── .github/workflows/deploy.yml   # CI/CD verso GitHub Pages
-└── discografica-romana/           # applicazione SvelteKit
+├── .github/workflows/deploy.yml   # CI/CD to GitHub Pages
+└── discografica-romana/           # SvelteKit application
     ├── src/
-    │   ├── lib/                   # componenti: Navbar, Hero, AboutSection,
+    │   ├── lib/                   # components: Navbar, Hero, AboutSection,
     │   │                          #   StatsSection, ContactForm, Footer
-    │   └── routes/                # pagine: home e privacy-policy
-    ├── static/                    # immagini, font, CNAME
-    └── .storybook/                # configurazione Storybook
+    │   └── routes/                # pages: home and privacy-policy
+    ├── static/                    # images, fonts, CNAME
+    └── .storybook/                # Storybook configuration
 ```
 
-## Sviluppo locale
+## Getting started
 
-**Requisiti:** Node.js 22 (la stessa versione usata dalla CI) e npm.
+**Requirements:** Node.js 22 (the same version used by CI) and npm.
 
 ```sh
 cd discografica-romana
@@ -44,40 +46,40 @@ npm install
 npm run dev
 ```
 
-Il sito è disponibile su `http://localhost:5173`.
+The site is available at `http://localhost:5173`.
 
-### Script disponibili
+### Available scripts
 
-| Comando | Descrizione |
+| Command | Description |
 | --- | --- |
-| `npm run dev` | Server di sviluppo con hot reload |
-| `npm run build` | Build statica nella cartella `build/` |
-| `npm run preview` | Anteprima locale della build |
-| `npm run check` | Controllo tipi con `svelte-check` |
-| `npm run storybook` | Storybook su `http://localhost:6006` |
+| `npm run dev` | Development server with hot reload |
+| `npm run build` | Static build into the `build/` folder |
+| `npm run preview` | Preview the build locally |
+| `npm run check` | Type checking with `svelte-check` |
+| `npm run storybook` | Storybook at `http://localhost:6006` |
 
-## Form contatti
+## Contact form
 
-Il form in homepage invia i dati a Formspree tramite un endpoint pubblico definito in [`ContactForm.svelte`](discografica-romana/src/lib/ContactForm.svelte). Non servono variabili d'ambiente né chiavi API.
+The form on the home page submits to Formspree through a public endpoint defined in [`ContactForm.svelte`](discografica-romana/src/lib/ContactForm.svelte). No environment variables or API keys are needed.
 
-## Deploy
+## Deployment
 
-Ogni push su `landing-page` avvia il workflow [`deploy.yml`](.github/workflows/deploy.yml), che:
+Every push to `landing-page` triggers the [`deploy.yml`](.github/workflows/deploy.yml) workflow, which:
 
-1. installa le dipendenze (`npm ci`);
-2. genera la build statica (`npm run build`);
-3. pubblica il contenuto di `build/` sul branch `gh-pages`, servito da GitHub Pages.
+1. installs dependencies (`npm ci`);
+2. builds the static site (`npm run build`);
+3. publishes the contents of `build/` to the `gh-pages` branch, served by GitHub Pages.
 
-Il dominio personalizzato è configurato tramite il file [`static/CNAME`](discografica-romana/static/CNAME).
+The custom domain is configured through the [`static/CNAME`](discografica-romana/static/CNAME) file.
 
 ## Privacy
 
-Il sito non usa cookie di profilazione. Le informazioni sul trattamento dei dati inviati tramite il form sono nella pagina `/privacy-policy`.
+The site does not use profiling cookies. Information on how data submitted through the form is processed is available on the `/privacy-policy` page.
 
-## Logo e marchio
+## Logo and trademark
 
-Il nome, il logo e l'identità visiva di **Discografica Romana** sono di proprietà esclusiva dell'etichetta e **non possono essere utilizzati**, copiati, modificati o distribuiti, in tutto o in parte, senza autorizzazione scritta. Questo vale anche per i fork e per i progetti derivati di questo repository: se riutilizzi il codice, rimuovi il logo (`static/images/logo.png`, `discografica_profilo.png`, favicon) e ogni riferimento al marchio.
+The name, logo and visual identity of **Discografica Romana** are the exclusive property of the label and **may not be used**, copied, modified or distributed, in whole or in part, without written permission. This also applies to forks and derivative projects of this repository: if you reuse the code, remove the logo (`static/images/logo.png`, `discografica_profilo.png`, favicon) and every reference to the brand.
 
-## Licenza
+## License
 
-Tutti i diritti riservati © Discografica Romana. Il repository è consultabile, ma loghi, immagini, font e contenuti non sono riutilizzabili senza autorizzazione.
+All rights reserved © Discografica Romana. The repository may be browsed, but logos, images, fonts and content may not be reused without permission.
