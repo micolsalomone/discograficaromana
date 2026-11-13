@@ -93,6 +93,10 @@ The app reads from and writes to these Supabase tables: `events`, `studios`, `ar
 
 The build uses `@sveltejs/adapter-auto`, which picks the right adapter for the hosting platform. On an unsupported platform, replace it with a suitable one. Set the two `PUBLIC_SUPABASE_*` variables in the production environment as well.
 
+## Credits
+
+The cover video (`static/video/1920x1080_orange2.mp4`) and its poster image were created by **Jacopo Mancini**, a member of Discografica Romana. All rights belong to Discografica Romana, and they **may not be used**, copied, modified or distributed by others without written permission. Jacopo's official channels are Instagram [@jacopomancini_ar](https://www.instagram.com/jacopomancini_ar/) and [replayfilmaker.com](https://replayfilmaker.com).
+
 ## Logo and trademark
 
 The name, logo and visual identity of **Discografica Romana** are the exclusive property of the label and **may not be used**, copied, modified or distributed, in whole or in part, without written permission. This also applies to forks and derivative projects of this repository: if you reuse the code, remove the logo (`static/images/logo.png`, favicon) and every reference to the brand.
